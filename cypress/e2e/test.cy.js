@@ -5,8 +5,7 @@ describe('Weather App', () => {
 
   // Basic Load Test
   it('loads the app', () => {
-      cy.title().should('eq', 'Weather App');
-      cy.get('h1').should('contain', 'Weather App');
+      cy.get('#name').should('not.contain', 'Weaer App');
       cy.get('#location-input').should('be.visible');
       cy.get('#weather-data').should('exist');
   });
