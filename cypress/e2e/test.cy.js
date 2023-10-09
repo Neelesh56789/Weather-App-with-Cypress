@@ -92,6 +92,14 @@ describe('Weather App Error Handling', () => {
       cy.get('#weather-data').should('contain', 'London');
     });
   
+    it('displays "Error: City not found" for an incorrect city name', () => {
+      const invalidCityName = 'Neymar';
+      cy.get('#location-input').type(invalidCityName);
+      cy.get('#location-form').submit();
+  
+      // Assert that the error message is displayed
+      cy.get('#weather-data').should('contain', 'Error: City not found');
+    });
 
     it('should clear input field after fetching weather data', () => {
       cy.get('#location-input').type('London');
